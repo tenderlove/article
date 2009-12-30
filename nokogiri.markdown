@@ -116,6 +116,10 @@ will be represented in memory with a tree that looks like this:
 
 ![HTML Tree](html_tree.png)
 
+Any data extraction technique we will use is simply a way for traversing this
+in-memory tree.  If we keep this structure in mind while trying to do data
+extraction, we can truly enter parsing nirvana!
+
 ## Data Extraction
 
 ### Basic XPath
