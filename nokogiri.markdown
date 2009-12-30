@@ -76,6 +76,25 @@ Each of these strategies have different advantages and disadvantages.  We
 won't cover the particular differences in each, but the DOM interface is most
 common and easy to use for developers, so that is the interface we'll study.
 
+There are two main entry points to Nokogiri depending on the kind of document
+you wish to parse, one for HTML documents and one for XML documents.  Parsing
+HTML documents looks like this:
+
+    doc = Nokogiri::HTML(html_document)
+
+Parsing XML documents looks like this:
+
+    doc = Nokogiri::XML(xml_document)
+
+Both of these functions will take an IO object *or* a String object.  Since
+both forms accept IO objects, we can even feed open-uri straight in to
+Nokogiri like this:
+
+    doc = Nokogiri::HTML(open("http://www.google.com/search?q=doughnuts"))
+
+Feeding Nokogiri an IO object is slightly more efficient than using a String,
+but you should choose the one that is most convenient.
+
 ### Data structures
 
 ## Data Extraction
