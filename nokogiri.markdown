@@ -74,7 +74,7 @@ different strategies:
 
 Each of these strategies have different advantages and disadvantages.  We
 won't cover the particular differences in each, but the DOM interface is most
-common and easy to use for developers, so that is what we'll use.
+common and easy to use for developers, so that is the interface we'll study.
 
 ### Data structures
 
