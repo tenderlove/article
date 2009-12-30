@@ -97,6 +97,25 @@ but you should choose the one that is most convenient.
 
 ### Data structures
 
+To become data extraction Zen Masters, we first need to understand the data
+structure returned by Nokogiri.  Nokogiri converts HTML and XML documents in
+to a tree data structure.
+
+For example, an HTML document that looks like this:
+
+    <html>
+      <head>
+        <title>Hello!</title>
+      </head>
+      <body id="uniq">
+        <h1>Hello World!</h1>
+      </body>
+    </html>
+
+will be represented in memory with a tree that looks like this:
+
+![HTML Tree](html_tree.png)
+
 ## Data Extraction
 
 ### Basic XPath
