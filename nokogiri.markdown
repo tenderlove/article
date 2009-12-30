@@ -52,9 +52,29 @@ you, and ship it along with Nokogiri.  On Windows, to install, simply do
 
     gem install nokogiri
 
+### Oh Noes!  Something went wrong!
+
+Nokogiri ships with some basic intelligence for finding your installation of
+libxml2.  But clever developers can easily fool it!  If you have problems,
+first check that the libxml2 and libxslt development packages are installed.
+If everything seems OK, and Nokogiri *still* won't install, make sure to send
+an email to [the mailing list][http://groups.google.com/group/nokogiri-talk].
+We're here to help!
+
 ## Basic parsing
 
+Now that we have installation out of the way, it's time to get Nokogiri to do
+some work for us.  Nokogiri lets you parse an HTML or XML document using a few
+different strategies:
 
+* DOM
+* SAX
+* Reader
+* Pull
+
+Each of these strategies have different advantages and disadvantages.  We
+won't cover the particular differences in each, but the DOM interface is most
+common and easy to use for developers, so that is what we'll use.
 
 ### Data structures
 
