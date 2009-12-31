@@ -201,6 +201,34 @@ For more information on using XPath within Nokogiri, check out the
 [Nokogiri tutorials][http://nokogiri.org/tutorials] as well as the
 [RDoc][http://nokogiri.org].
 
+Next, let's take a look at CSS syntax.
+
 ### Basic CSS
+
+CSS is similar to XPath in that it's another language for searching a tree
+data structure.  In this section, we'll perform the same task as the XPath
+section, but we'll examine the CSS syntax.
+
+CSS does not separate tag matching patterns by slashes, but rather by
+whitespace or "greater than" characters (actually there are more, but here
+we'll just talk about those two).  Let's rewrite our previous XPath as CSS and
+examine the syntax.
+
+    //h3/a
+
+can be written in CSS as:
+
+    h3 > a
+
+The ">" character indicates that the "a" tag must be a direct descendant of
+the "h3" tag.  Most CSS that I see uses space separators like this:
+
+    h3 a
+
+Using a space indicates that there could be any number of tags between the
+"h3" tag and the "a" tag.  The space is similar to "//" in XPath, and this CSS
+query could be written in XPath like this:
+
+    //h3//a
 
 ### Basic Node API
