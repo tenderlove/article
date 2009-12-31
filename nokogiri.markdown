@@ -157,10 +157,14 @@ In English, this XPath says:
 
 > Find all "a" tags with a parent tag whose name is "h3"
 
+Thus, our program finds all "a" tags with "h3" parents, loops over them, and
+prints out the text content.
+
 XPath works like a directory structure where the leading "/" indicates the
 root of the tree.  Slashes separate the tag matching information.  When there
 is nothing between slashes, that is a sort of wild card meaning "any tag
-matches".
+matches".  The "h3" and "a" are tag name matchers, and only match when the tag
+name matches.
 
 ### Basic CSS
 
