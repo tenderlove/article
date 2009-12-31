@@ -231,4 +231,44 @@ query could be written in XPath like this:
 
     //h3//a
 
+Similar to XPath, CSS can use brackets for matching attributes.  Let's do a
+couple more XPath to CSS translations.  On the left is XPath, on the right is
+CSS:
+
+    h3[@class]        =>  h3[class]
+    h3[@class = "r"]  =>  h3[class = "r"]
+
+This syntax works, but CSS provides us with a shorthand for matching the
+"class" attribute.  To find all h3 tags whose class attribute contains "r",
+we can say:
+
+    h3.r
+
+There is a subtle difference between the two previous examples.  The first one
+must be an *exact match* where the second one says "the class attribute must
+contain the value r".  That means only the CSS selector will match a tag like
+this:
+
+    <h3 class="r foo">Hi!</h3>
+
+The XPath selector and our translated CSS selector would not match this tag,
+but the "h3.r" selector would.  Most of the time, the CSS class selectors do
+what we want.  Only when I need something very specific do I use the bracket
+form in my CSS selectors.
+
+With this knowledge in hand, we can rewrite our original program using CSS
+selectors:
+
+    doc = Nokogiri::HTML(open("http://www.google.com/search?q=doughnuts"))
+    doc.css('h3.r > a.l').each do |node|
+      puts node.text
+    end
+
+I think the CSS selectors usually result in clear, more concise queries than
+XPath does, so I usually stick to CSS queries in my code.  There are some
+tasks which CSS cannot accomplish that XPath can, so it's nice to be able to
+fall back to XPath queries when I need to.
+
+Next, let's look at some basic node API provided by Nokogiri.
+
 ### Basic Node API
