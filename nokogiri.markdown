@@ -137,9 +137,9 @@ manual tree traversal.
 The [XPath language][http://www.w3.org/TR/xpath] was written for easily
 traversing an XML tree structure, but we can use it with HTML trees as well.
 
-Let's look at a sample program for extracting links from a google search.
-We'll use XPath to find the data we want, and we'll pick apart the XPath
-syntax:
+Let's look at a sample program for extracting search result links from a google
+search.  We'll use XPath to find the data we want, and we'll pick apart the
+XPath syntax:
 
     require 'open-uri'
     require 'nokogiri'
@@ -165,6 +165,41 @@ root of the tree.  Slashes separate the tag matching information.  When there
 is nothing between slashes, that is a sort of wild card meaning "any tag
 matches".  The "h3" and "a" are tag name matchers, and only match when the tag
 name matches.
+
+Finding tag names is great, but if you run the previous program, you might
+find that it returns more "a" tags than we actually want.  We need to narrow
+down our search based on some attributes of the tags, specifically the "class"
+values.  To match attribute values in XPath, we use brackets.  Let's look at a
+couple examples.
+
+To match "h3" tags that have a class attribute, we would say:
+
+    h3[@class]
+
+To match "h3" tags whose class attribute is equal to the string "r", we would
+say:
+
+    h3[@class = "r"]
+
+Using the attribute matching construct, we can modify our previous query to:
+
+    //h3[@class = "r"]/a[@class = "l"]
+
+which in English terms is:
+
+> Find all "a" tags with a class attribute equal to "l" and an immediate
+> parent tag "h3" that has a class attribute equal to "r"
+
+If we substitute that XPath back in to our original program, we'll get the
+expected results.
+
+For more information on doing XPath queries, I recommend checking out the
+[tutorial at w3schools][http://www.w3schools.com/xpath/xpath_syntax.asp] as
+well as the [w3 recommendation][http://www.w3.org/TR/xpath].
+
+For more information on using XPath within Nokogiri, check out the
+[Nokogiri tutorials][http://nokogiri.org/tutorials] as well as the
+[RDoc][http://nokogiri.org].
 
 ### Basic CSS
 
