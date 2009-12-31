@@ -118,10 +118,50 @@ will be represented in memory with a tree that looks like this:
 
 Any data extraction technique we will use is simply a way for traversing this
 in-memory tree.  If we keep this structure in mind while trying to do data
-extraction, we can truly enter parsing nirvana!
+extraction, we can truly enter data extraction nirvana!
 
 ## Data Extraction
 
+We've seen how to turn an HTML or XML document in to an in-memory tree.  Now
+we're going to try to do something useful with this tree, namely extract some
+data.  Let's take a look at a few different strategies for unlocking the data
+in our tree.
+
+We're going to look at three different ways to traverse our in-memory tree.
+The first two, XPath and CSS, are small languages built specifically for tree
+traversal.  The last thing we'll examine is some of the Nokogiri API for
+manual tree traversal.
+
 ### Basic XPath
 
+The [XPath language][http://www.w3.org/TR/xpath] was written for easily
+traversing an XML tree structure, but we can use it with HTML trees as well.
+
+Let's look at a sample program for extracting links from a google search.
+We'll use XPath to find the data we want, and we'll pick apart the XPath
+syntax:
+
+    require 'open-uri'
+    require 'nokogiri'
+
+    doc = Nokogiri::HTML(open("http://www.google.com/search?q=doughnuts"))
+    doc.xpath('//h3/a').each do |node|
+      puts node.text
+    end
+
+The XPath used in this program is:
+
+    //h3/a
+
+In English, this XPath says:
+
+> Find all "a" tags with a parent tag whose name is "h3"
+
+XPath works like a directory structure where the leading "/" indicates the
+root of the tree.  Slashes separate the tag matching information.  When there
+is nothing between slashes, that is a sort of wild card meaning "any tag
+matches".
+
 ### Basic CSS
+
+### Basic Node API
