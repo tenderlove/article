@@ -1,8 +1,18 @@
 # Getting Started with Nokogiri
 
-Parsing XML and HTML is something most programmers 
+Nokogiri is a library for dealing with XML and HTML documents.
+[I][http://tenderlovemaking.com/] wrote this
+library along with my (more attractive) partner in crime,
+[Mike Dalessio][http://mike.daless.io/].  We both use and enjoy working with
+Nokogiri for dealing with HTML and XML on a daily basis, and I'd like to share
+it with you!  In this article, I will cover:
 
-FUCK!!!!!!  INRO GOES HERE
+* Getting Nokogiri installed
+* Basic document parsing
+* Basic data extraction
+
+Hopefully by the end of this article you will also be able to use and enjoy
+Nokogiri on a day to day basis too!
 
 ## Installation
 
@@ -304,3 +314,17 @@ We can even get a list of attributes or values of attributes like so:
 
     node.keys   #=> list of attribute name
     node.values #=> list of attribute values
+
+For more information on things you can do with Nodes, check out the
+[Node Documentation][http://nokogiri.org/Nokogiri/XML/Node.html] and also the
+Nokogiri [tutorials section][http://nokogiri.org/tutorials].
+
+## Conclusion
+
+I hope this article has you on your way to HTML and XML parsing nirvana.
+Remember the tree data structure, and remember that XPath and CSS can be
+performed on HTML documents *and* XML documents.
+
+Make sure to check out [our documentation][http://nokogiri.org/], and if you
+have any problems make sure to
+[join the mailing list][http://groups.google.com/group/nokogiri-talk]!
