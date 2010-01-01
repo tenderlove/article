@@ -272,3 +272,35 @@ fall back to XPath queries when I need to.
 Next, let's look at some basic node API provided by Nokogiri.
 
 ### Basic Node API
+
+Since we're dealing with a tree data structure, Nokogiri provides methods for
+navigating that tree.  In fact, all of the tree traversal we've seen so far
+using XPath and CSS can be accomplished manually via Ruby.  Manual tree
+traversal is, however, cumbersome and verbose which is why languages like
+XPath and CSS exist.  Sometimes a combination of XPath or CSS *plus* manual
+tree traversal is easiest, so it is still important to know the API.
+
+Every tag in a document is represented by class called a Node.  Each node in
+the tree has 0 or more children, 0 or 1 parent, 0 or more siblings, and 0 or
+more attributes.  Nokogiri provides methods for accessing all of these things
+on any particular node.  We can access any of those relative nodes like so:
+
+    node.parent           #=> parent node
+    node.children         #=> children nodes
+    node.next_sibling     #=> next sibling node
+    node.previous_sibling #=> previous sibling node
+
+These node access methods can be used for manually traversing a tree, but I
+tend to leave the hard work to XPath or CSS queries and only use manual tree
+access when I have to.
+
+When it comes to accessing attributes of a tag, the node may be treated like a
+normal Ruby Hash.  We can get and set attributes on a node like so:
+
+    node['class']           #=> the value of the class attribute
+    node['class'] = 'foo'
+
+We can even get a list of attributes or values of attributes like so:
+
+    node.keys   #=> list of attribute name
+    node.values #=> list of attribute values
