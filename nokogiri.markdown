@@ -254,10 +254,11 @@ we can say:
 
     h3.r
 
-There is a subtle difference between the two previous examples.  The first one
-must be an *exact match* where the second one says "the class attribute must
-contain the value r".  That means only the CSS selector will match a tag like
-this:
+There is a subtle difference between the two previous examples.  The selector
+`h3[@class = "r"]` must be an *exact match*.  The class value must exactly
+equal the string `r`.  Where as, the selector `h3.r` means "the class attribute
+must contain the value r".  That means `h3.r` will match the following tag,
+but `h3[@class = "r"]` will not:
 
     <h3 class="r foo">Hi!</h3>
 
